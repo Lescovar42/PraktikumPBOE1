@@ -10,7 +10,7 @@ public class MTitik {
         Titik t1 = new Titik(3, 4);
         
         // Memanggil method public
-        System.out.println("--- Informasi Titik t1 ---");
+        System.out.println(" Informasi Titik t1 ");
         t1.printTitik();
         System.out.println("Absis (melalui getter): " + t1.getAbsis());
         System.out.println("Ordinat (melalui getter): " + t1.getOrdinat());
@@ -18,7 +18,7 @@ public class MTitik {
         // Mengubah nilai atribut melalui mutator
         t1.setAbsis(5);
         t1.setOrdinat(12);
-        System.out.println("\n--- Setelah Mutator ---");
+        System.out.println("\n Setelah Mutator ");
         t1.printTitik();
         
         // Memanggil method lainnya
