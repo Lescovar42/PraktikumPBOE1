@@ -1,7 +1,7 @@
 /* Nama File    : Garis.java
- * Deskripsi    : berisi atribut dan method dalam class Garis
+ * Deskripsi    : berisi atribut dan method dalam class Garis dengan access modifier
  * Pembuat      : Muhammad Farhan Abdul Azis
- * Tanggal      : 27 Februari 2026
+ * Tanggal      : 06 Maret 2026
  */
 
 public class Garis {
@@ -11,86 +11,86 @@ public class Garis {
     private static int counterGaris = 0;
 
     /********************METHOD**********************/
-    Garis() {
+    // Konstruktor tanpa parameter yang menginisialisasi titik awal dengan (0,0) dan titik akhir dengan (1,1)
+    public Garis() {
         this.titikAwal = new Titik();
         this.titikAkhir = new Titik(1, 1);
         counterGaris++;
     }
 
-    Garis(Titik awal, Titik akhir) {
+    // Konstruktor dengan parameter masukan titik awal dan titik akhir
+    public Garis(Titik awal, Titik akhir) {
         this.titikAwal = awal;
         this.titikAkhir = akhir;
         counterGaris++;
     }
 
-    //mengembalikan titik awal
-    Titik getTitikAwal() {
+    // Selektor (getter) untuk titik awal
+    public Titik getTitikAwal() {
         return titikAwal;
     }
 
-    //mengeset titik awal
-    void setTitikAwal(Titik titikAwal) {
+    // Mutator (setter) untuk titik awal
+    public void setTitikAwal(Titik titikAwal) {
         this.titikAwal = titikAwal;
     }
 
-    //mengembalikan titik akhir
-    Titik getTitikAkhir() {
+    // Selektor (getter) untuk titik akhir
+    public Titik getTitikAkhir() {
         return titikAkhir;
     }
 
-    //mengeset titik akhir
-    void setTitikAkhir(Titik titikAkhir) {
+    // Mutator (setter) untuk titik akhir
+    public void setTitikAkhir(Titik titikAkhir) {
         this.titikAkhir = titikAkhir;
     }
 
-    //mengembalikan counter garis
-    static int getCounterGaris() {
+    // Selektor untuk mendapatkan atribut static counterGaris
+    public static int getCounterGaris() {
         return counterGaris;
     }
 
-    //menghitung dan mengembalikan panjang garis
-    double getPanjang() {
-        double dx = titikAkhir.getAbsis() - titikAwal.getAbsis();
-        double dy = titikAkhir.getOrdinat() - titikAwal.getOrdinat();
-        return Math.sqrt(dx * dx + dy * dy);
+    // Method untuk mendapatkan panjang sebuah garis
+    public double getPanjang() {
+        return titikAwal.getJarak(titikAkhir);
     }
 
-    //menghitung dan mengembalikan gradien garis
-    double getGradien() {
-        double dx = titikAkhir.getAbsis() - titikAwal.getAbsis();
-        double dy = titikAkhir.getOrdinat() - titikAwal.getOrdinat();
-        return dy / dx; 
+    // Method untuk mendapatkan gradien dari sebuah garis
+    public double getGradien() {
+        double x1 = titikAwal.getAbsis();
+        double y1 = titikAwal.getOrdinat();
+        double x2 = titikAkhir.getAbsis();
+        double y2 = titikAkhir.getOrdinat();
+        return (y2 - y1) / (x2 - x1);
     }
 
-    //menghitung dan mengembalikan titik tengah garis
-    Titik getTitikTengah() {
+    // Method untuk mendapatkan titik tengah dari sebuah garis
+    public Titik getTitikTengah() {
         double midX = (titikAwal.getAbsis() + titikAkhir.getAbsis()) / 2;
         double midY = (titikAwal.getOrdinat() + titikAkhir.getOrdinat()) / 2;
         return new Titik(midX, midY);
     }
 
-    //mengecek apakah garis sejajar dengan garis lain
-    boolean isSejajar(Garis G) {
-        return this.getGradien() == G.getGradien();
+    // Method untuk mengecek apakah garis tersebut sejajar dengan sebuah garis lainnya
+    public boolean isSejajar(Garis g) {
+        return this.getGradien() == g.getGradien();
     }
 
-    //mengecek apakah garis tegak lurus dengan garis lain
-    boolean isTegakLurus(Garis G) {
-        return (this.getGradien() * G.getGradien()) == -1;
+    // Method untuk mengecek apakah garis tersebut tegak lurus dengan sebuah garis lainnya
+    public boolean isTegakLurus(Garis g) {
+        return (this.getGradien() * g.getGradien()) == -1;
     }
 
-    //mencetak titik awal dan titik akhir
-    void printGaris() {
-        System.out.println("Titik Awal: (" + titikAwal.getAbsis() + ", " + titikAwal.getOrdinat() + ")");
-        System.out.println("Titik Akhir: (" + titikAkhir.getAbsis() + ", " + titikAkhir.getOrdinat() + ")");
+    // Method untuk menampilkan ke layar titik awal dan titik akhir garis
+    public void displayGaris() {
+        System.out.println("Garis dari (" + titikAwal.getAbsis() + ", " + titikAwal.getOrdinat() + ") ke (" + titikAkhir.getAbsis() + ", " + titikAkhir.getOrdinat() + ")");
     }
 
-    //mencetak persamaan garis dalam bentuk y = mx + c
-    void printPersamaanGaris() {
+    // Method untuk menampilkan persamaan garis dalam bentuk string y = mx + c
+    public String getPersamaanGaris() {
         double m = getGradien();
         double c = titikAwal.getOrdinat() - (m * titikAwal.getAbsis());
-        
-        System.out.println("Persamaan Garis: y = " + m + "x + " + c);
+        return "y = " + m + "x + " + c;
     }
 
 } //end class Garis

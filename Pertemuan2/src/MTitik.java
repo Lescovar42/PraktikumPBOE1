@@ -1,25 +1,37 @@
-/* Nama File    : Titik.java
- * Deskripsi    : berisi atribut dan method dalam class Titik
+/* Nama File    : MTitik.java
+ * Deskripsi    : main class untuk menguji class Titik
  * Pembuat      : Muhammad Farhan Abdul Azis
- * Tanggal      : 19 Februari 2026
+ * Tanggal      : 06 Maret 2026
  */
 
 public class MTitik {
     public static void main(String[] args) {
-        Titik T1 = new Titik(); //Membuat objek titik T1 (0,0)
-        Titik T3 = new Titik(5, 7);
-        T1.setAbsis(3); //mengubah absis T1 dengan nilai 3
-        T1.setOrdinat(4);   //mengubah ordinat T1 dengan nilai 4
-        T1.printTitik();    //mencetak koordinat T1 ke layar
-        T1.geser(3,4);  //menggeser T1 sejauh (3,4)
-        T1.printTitik();    //menampilkan koordinat T1 setelah digeser
-
-        Titik T2 = T1;
-        T2.printTitik();
-        T1.setAbsis(10);
-        T1.setOrdinat(10);
-        T2.printTitik();
-
-        T3.printTitik();
+        // Membuat objek Titik
+        Titik t1 = new Titik(3, 4);
+        
+        // Memanggil method public
+        System.out.println("--- Informasi Titik t1 ---");
+        t1.printTitik();
+        System.out.println("Absis (melalui getter): " + t1.getAbsis());
+        System.out.println("Ordinat (melalui getter): " + t1.getOrdinat());
+        
+        // Mengubah nilai atribut melalui mutator
+        t1.setAbsis(5);
+        t1.setOrdinat(12);
+        System.out.println("\n--- Setelah Mutator ---");
+        t1.printTitik();
+        
+        // Memanggil method lainnya
+        System.out.println("Kuadran: " + t1.getKuadran());
+        System.out.println("Jarak Pusat: " + t1.getJarakPusat());
+        
+        // Memanggil static getter
+        System.out.println("\nJumlah objek Titik yang dibuat: " + Titik.getCounterTitik());
+        
+        /* 
+         * Eksperimen: Jika kita mencoba mengakses 't1.absis' secara langsung, 
+         * maka akan terjadi compile error karena atribut tersebut bersifat private.
+         * Contoh: System.out.println(t1.absis); // Error: absis has private access in Titik
+         */
     }
 }
