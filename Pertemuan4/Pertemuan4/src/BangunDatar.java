@@ -6,6 +6,12 @@ public class BangunDatar {
     public BangunDatar() {
     }
 
+    public BangunDatar(int jmlSisi, String warna, String border) {
+        this.jmlSisi = jmlSisi;
+        this.warna = warna;
+        this.border = border;
+    }
+
     public int getJmlSisi() {
         return jmlSisi;
     }

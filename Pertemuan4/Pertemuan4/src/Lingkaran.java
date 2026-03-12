@@ -7,10 +7,8 @@ public class Lingkaran extends BangunDatar {
     }
 
     public Lingkaran(double jariJari, String warna, String border) {
+        super(1, warna, border);
         this.jariJari = jariJari;
-        setWarna(warna);
-        setBorder(border);
-        setJmlSisi(1);
     }
 
     public double getJariJari() {
